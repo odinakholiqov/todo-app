@@ -49,6 +49,7 @@ function Todo() {
             </form>
             
             <h1>Todo List</h1>
+            {todos.length === 0 && "No Todos"}
             <ul>
                 {todos.map(todo => {
                     return (
