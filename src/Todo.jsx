@@ -26,7 +26,11 @@ function Todo() {
         })
     }
 
-    
+    function deleteTodo(id) {
+        setTodos(currentTodos => {
+            return currentTodos.filter(todo => todo.id !== id)
+            })
+    }
 
 
     return (
@@ -53,7 +57,7 @@ function Todo() {
                                 <input type="checkbox" checked={todo.completed} onChange={e => toggleTodo(todo.id, e.target.checked)}/>
                                 {todo.title}
                             </label>
-                            <button>
+                            <button onClick={() => deleteTodo(todo.id)}>
                                 Delete
                             </button>
                         </li>
