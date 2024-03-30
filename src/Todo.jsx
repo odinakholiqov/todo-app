@@ -14,7 +14,20 @@ function Todo() {
 
         setNewItem("")
     }
-    console.log(todos)
+
+    function toggleTodo(id, completed) {
+        setTodos(currentTodos => {
+            return currentTodos.map(todo => {
+                if (todo.id === id) {
+                    return {...todo, completed}
+                }
+                return todo
+            })
+        })
+    }
+
+    
+
 
     return (
         <>
@@ -37,7 +50,7 @@ function Todo() {
                     return (
                         <li key={todo.id}>
                             <label>
-                                <input type="checkbox" checked={todo.completed}/>
+                                <input type="checkbox" checked={todo.completed} onChange={e => toggleTodo(todo.id, e.target.checked)}/>
                                 {todo.title}
                             </label>
                             <button>
